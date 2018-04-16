@@ -125,7 +125,7 @@ module MarketBot
           end.compact.uniq
         end
 
-        node = doc.at_css('img[alt="Cover art"]')
+        node = doc.at_css('img[alt="Cover art"]', 'img[alt="Covergestaltung"]')
         unless node.nil?
           result[:cover_image_url] = MarketBot::Util.fix_content_url(node[:src])
         end
