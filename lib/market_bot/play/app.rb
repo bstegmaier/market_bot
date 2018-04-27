@@ -98,10 +98,10 @@ module MarketBot
         result[:description]  = doc.at_css('div[itemprop="description"]').inner_html.strip if doc.at_css('div[itemprop="description"]')
         result[:title]        = doc.at_css('h1[itemprop="name"]').text
 
-        if doc.at_css('meta[itemprop="ratingValue"]')
+        if doc.at_css('meta[itemprop="ratingValue"]') && doc.at_css('meta[itemprop="reviewCount"]')
           node            = doc.at_css('meta[itemprop="ratingValue"]')
           result[:rating] = node[:content].strip
-          node            = doc.at_css('meta[itemprop="ratingCount"]')
+          node            = doc.at_css('meta[itemprop="reviewCount"]')
           result[:votes]  = node[:content].strip.to_i
         end
 
